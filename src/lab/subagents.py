@@ -6,12 +6,20 @@ Kiểm tra:    pytest tests/test_02_agent.py
 
 
 def get_subagents() -> list[dict]:
-    """Trả về danh sách subagent (ít nhất 2, tên khác nhau).
-
-    Mỗi phần tử là một dict có các khóa bắt buộc:
-      "name":          tên duy nhất (chữ thường, có thể có dấu gạch ngang)
-      "description":   khi nào tác tử chính nên giao việc cho subagent này (viết như một hướng dẫn hành động)
-      "system_prompt": chỉ dẫn cho subagent
-    Gợi ý vai trò: explorer (đọc và báo cáo), implementer (thực hiện), reviewer (kiểm tra độc lập).
-    """
-    raise NotImplementedError("TODO: cài đặt get_subagents (xem guides/pseudocode/02_subagents.md)")
+    return [
+        {
+            "name": "explorer",
+            "description": "Dùng khi cần khám phá cấu trúc file, đọc README, tìm hiểu code và dữ liệu. Tác tử này chỉ đọc và báo cáo sự thật, không thay đổi file nào.",
+            "system_prompt": "Bạn là explorer. Nhiệm vụ của bạn là đọc các file (README, code, cấu trúc thư mục), tìm hiểu kiến trúc hoặc lỗi. Bạn KHÔNG ĐƯỢC sửa file. Trả về một báo cáo chi tiết về những gì bạn tìm thấy."
+        },
+        {
+            "name": "implementer",
+            "description": "Dùng khi cần thực hiện thay đổi vào code, tạo hoặc sửa file, chạy test, hoặc thực thi lệnh.",
+            "system_prompt": "Bạn là implementer. Nhiệm vụ của bạn là thay đổi file, viết code, sửa lỗi, chạy script/test và báo cáo lại kết quả thực thi một cách chính xác."
+        },
+        {
+            "name": "reviewer",
+            "description": "Dùng khi cần kiểm tra độc lập các kết quả hoặc sửa đổi để đảm bảo đúng với yêu cầu.",
+            "system_prompt": "Bạn là reviewer. Nhiệm vụ của bạn là kiểm tra lại các thay đổi, đọc code/file đã sửa và đối chiếu với yêu cầu để tìm ra các trường hợp biên hoặc lỗi còn sót. Không tự ý sửa file."
+        }
+    ]
