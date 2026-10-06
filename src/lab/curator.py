@@ -85,7 +85,7 @@ def curate_skills(results_dir="results", source_condition="baseline", out_dir=No
                 if r.get("role") != "learn":
                     continue
                 
-                failed = [(k, v.get("detail", "")) for k, v in r.get("checks", {}).items() if not v.get("passed", True)]
+                failed = [(c.get("name"), c.get("detail", "")) for c in r.get("checks", []) if not c.get("passed", True)]
                 if not failed:
                     continue
                     
