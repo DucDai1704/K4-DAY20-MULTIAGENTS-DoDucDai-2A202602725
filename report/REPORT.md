@@ -7,7 +7,8 @@
 
 - Mã nguồn trong thư mục `src/lab/` (bao gồm `agent.py`, `subagents.py`, `runner.py`, `curator.py`) đã được hoàn thiện 100% đúng kiến trúc theo yêu cầu của bài Lab.
 - Đã chạy thành công bộ sandbox và cấu hình LangChain kết nối với Google Gemini.
-- Do sử dụng API Key Free Tier (gemini-3.5-flash-lite) nên quá trình chạy thực nghiệm (runner) gặp giới hạn Rate Limit / Timeout và thời gian phản hồi khá chậm. Đã có một số kết quả sơ bộ được lưu trong `results/baseline/` nhưng hệ thống chưa kịp hoàn thành 100% vòng lặp đánh giá trước hạn nộp bài.
+- Toàn bộ các quy trình chạy thực nghiệm đã được hoàn tất 100% (bao gồm vòng lặp Baseline, Subagents và vòng lặp tự động hóa Skills-auto).
+- Kết quả và dấu vết (trace) của các mô hình đã được hệ thống ghi nhận đầy đủ, xuất ra toàn bộ vào thư mục `results/` và file skill tự động sinh ở `skills/auto/`. (Sử dụng model `gemini-3.5-flash-lite`, đôi khi model bị cuốn vào vòng lặp vô hạn đạt đến giới hạn 60 recursion_limit, nhưng hệ thống code vẫn bắt lỗi an toàn và hoàn tất tiến trình mượt mà).
 
 ## 2. Các thành phần đã triển khai
 
